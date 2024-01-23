@@ -7,7 +7,7 @@
     <title>MuuuuuuLovers</title>
   </head>
   <body>
-    <section class="form-container">
+    <section class="home-container" id="home">
       <div class="content-2-mobile">
         <h1 class="destaque-mobile">
           suculenta &<br />
@@ -37,7 +37,7 @@
           <input type="email" id="email" required /><br />
 
           <label for="cep">CEP</label><br />
-          <input type="cep" id="cep" /><br />
+          <input type="number" id="cep" /><br />
 
           <div class="container-checkbox">
             <input type="checkbox" id="concordo" checked />
@@ -46,9 +46,40 @@
             >
           </div>
 
-          <button class="botao-primario" id="botao-cadastrar">Enviar</button>
+          <button class="botao-primario" id="botao-cadastrar">Cadastrar</button>
         </form>
       </div>
+
+      <div class="pessoas-container container-form">
+        <h1 class="title" style="margin-bottom: 24px">
+          Quantas pessoas vão participar?
+        </h1>
+
+        <form class="container-form-convidados">
+          <div class="input-homens-content">
+            <label for="homem">Quantos homens?</label><br />
+            <input type="number" id="homem" /><br />
+          </div>
+
+          <div class="input-mulheres-content">
+            <label for="mulher">Quantas mulheres?</label><br />
+            <input type="number" id="mulher" /><br />
+          </div>
+
+          <div class="input-crianças-content">
+            <label for="criança">Quantas crianças?</label><br />
+            <input type="number" id="criança" /><br />
+          </div>
+
+          <div class="input-bebidas-content">
+            <label for="bebidas">Quantas pessoas bebem?</label><br />
+            <input type="number" id="bebidas" /><br />
+          </div>
+
+          <button class="botao-primario" id="botao-enviar">Enviar</button>
+        </form>
+      </div>
+
       <div class="content-2">
         <h1 class="destaque">
           suculenta &<br />
@@ -58,7 +89,6 @@
         </h1>
       </div>
     </section>
-
     <script src="script.js"></script>
     <script
       src="https://kit.fontawesome.com/998c60ef77.js"
