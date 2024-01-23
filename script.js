@@ -1,9 +1,11 @@
 const checkbox = document.getElementById("checkbox");
+const label = document.getElementsByTagName("label");
 const inputNome = document.querySelector("#nome");
 const inputEmail = document.querySelector("#email");
 const inputCEP = document.querySelector("#cep");
 const buttonCadastrar = document.getElementById("botao-cadastrar");
-const arr = [];
+
+const dadosUsuarios = [];
 
 buttonCadastrar.addEventListener("click", function (e) {
   const nome = inputNome.value;
@@ -16,18 +18,18 @@ buttonCadastrar.addEventListener("click", function (e) {
     cep,
   };
 
+  let dadoUsuario = JSON.stringify(cadastro);
+  dadosUsuarios.push("dadoUsuario", dadoUsuario);
 
-  let novoArr = JSON.stringify(cadastro);
-  arr.push('novoArr',novoArr);
-
-  localStorage.setItem("meuarr", arr);
+  localStorage.setItem("usuários", dadosUsuarios);
 
   e.preventDefault();
 });
 
-// let fontLight = Array.from(document.querySelectorAll('.font-dark'))
+checkbox.addEventListener("change", function () {
+  document.body.classList.toggle("dark");
 
-// checkbox.addEventListener("change", function(){
-//   document.body.classList.toggle("dark");
-//   document.body.classList.toggle("font-light");
-// });
+  for (let item of label) {
+    item.classList.toggle("font-light");
+  }
+});
