@@ -1,5 +1,8 @@
 const checkbox = document.getElementById("checkbox");
+const containerForm = document.querySelector(".container-form");
+
 const label = document.getElementsByTagName("label");
+const input = document.getElementsByTagName("input");
 const inputNome = document.querySelector("#nome");
 const inputEmail = document.querySelector("#email");
 const inputCEP = document.querySelector("#cep");
@@ -31,5 +34,9 @@ checkbox.addEventListener("change", function () {
 
   for (let item of label) {
     item.classList.toggle("font-light");
+  }
+
+  for (item of containerForm) {
+    item.classList.toggle("input-dark");
   }
 });
