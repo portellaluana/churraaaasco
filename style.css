@@ -31,26 +31,28 @@ body {
   font-family: "Inter", sans-serif;
 }
 
-.title, .frase{
+.title,
+.frase {
   text-align: center;
   margin: 4px;
 }
 
 body.dark {
-  background: var(--cinza-escuro);
+  background: var(--red-escuro);
+  color: var(--cinza-claro);
+}
+
+.font-light {
   color: var(--cinza-claro);
 }
 
 .toggle-container {
-  max-width: 1080px;
-  width: 100%;
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.toggle-container {
-  align-items: end;
+  justify-content: end;
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+  bottom: 236px;
+  left: 71px;
 }
 
 .form-container {
@@ -92,7 +94,7 @@ body.dark {
 
 .destaque {
   color: white;
-  font-size: 72px;
+  font-size: 4.5em;
   text-align: right;
   display: flex;
   text-transform: uppercase;
@@ -102,30 +104,24 @@ body.dark {
 
 .checkbox {
   opacity: 0;
-  position: absolute;
 }
 
 .label {
-  background-color: var(--cinza-medio);
+  background-color: var(--red-normal);
   border-radius: 50px;
   cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border: 1px solid var(--cinza-claro);
   padding: 5px;
-  position: relative;
   height: 26px;
   width: 50px;
   transform: scale(1.5);
 }
 
 .label .ball {
-  background-color: var(--cinza-claro);
+  background-color: var(--red-escuro);
   border-radius: 50%;
   position: absolute;
-  top: 2px;
-  left: 2px;
+  top: 3px;
+  left: 3px;
   height: 20px;
   width: 20px;
   transform: translateX(0px);
@@ -138,18 +134,25 @@ body.dark {
 
 .fa-moon {
   color: var(--cinza-claro);
+  position: absolute;
+  top: 4px;
+  left: 27px;
 }
 
 .fa-sun {
-  color: var(--sun);
+  color: var(--cinza-claro);
+  position: absolute;
+  content: "\f185";
+  left: 4px;
+  top: 4px;
 }
 
-
-
 /* contato */
-.container-form label {
-  color: var(--cinza-escuro);
+.container-form {
   font-size: 0.8rem;
+}
+label {
+  color: var(--cinza-escuro);
 }
 
 .container-form {
@@ -206,17 +209,6 @@ select {
 .checkbox-btn {
   padding-bottom: 1rem;
   font-size: 0.8rem;
-}
-
-input[type="checkbox"] {
-  position: absolute;
-  opacity: 100;
-}
-
-input[type="checkbox"] + label {
-  position: relative;
-  cursor: pointer;
-  padding-left: 30px;
 }
 
 .btn-enviar {
