@@ -14,6 +14,7 @@
   padding: 0;
   border: 0;
   box-sizing: border-box;
+  width: 100%;
 }
 
 body {
@@ -64,7 +65,7 @@ body.dark {
 
 .botao-primario {
   font-weight: 900;
-  font-size: 20px;
+  font-size: 16px;
   color: white;
   background-color: var(--red-normal);
   width: 100%;
@@ -91,17 +92,19 @@ body.dark {
   background-position: center;
   justify-content: end;
 }
-
+.content-2-mobile {
+  display: none;
+}
 .destaque {
   color: white;
   font-size: 4.5em;
   text-align: right;
   display: flex;
   text-transform: uppercase;
-  max-width: 70%;
+  justify-content: end;
 }
-/* toggle-theme */
 
+/*              toggle-theme              */
 .checkbox {
   opacity: 0;
 }
@@ -129,7 +132,7 @@ body.dark {
 }
 
 .checkbox:checked + .label .ball {
-  transform: translateX(24px);
+  transform: translateX(22px);
 }
 
 .fa-moon {
@@ -147,10 +150,11 @@ body.dark {
   top: 4px;
 }
 
-/* contato */
+/*              form              */
 .container-form {
   font-size: 0.8rem;
 }
+
 label {
   color: var(--cinza-escuro);
 }
@@ -166,14 +170,18 @@ label {
 .container-form input,
 textarea,
 select {
-  background-color: white;
+  background-color: transparent;
   border: solid 1px var(--cinza-claro);
-  border-radius: 2px;
+  border-radius: 4px;
   width: 100%;
   margin-bottom: 1rem;
   padding: 8px;
-  color: #8a1b24;
+  color: var(--red-normal);
   font-weight: 700;
+}
+
+.input-dark {
+  color: var(--cinza-claro) !important;
 }
 
 .container-form input:focus,
@@ -205,22 +213,57 @@ select {
   width: 1rem;
   margin-right: 0.5rem;
 }
+input[type="checkbox"] {
+  background-color: var(--red-normal) !important;
+}
 
 .checkbox-btn {
   padding-bottom: 1rem;
   font-size: 0.8rem;
 }
 
-.btn-enviar {
-  font-family: "Montserrat", sans-serif;
-  text-decoration: none;
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: white;
-  background-color: var(--red-normal);
-  border: solid 1px var(--red-normal);
-  border-radius: 100px;
-  padding: 0.8rem 4rem;
-  width: 100%;
-  cursor: pointer;
+@media (max-width: 1350px) {
+  .destaque {
+    font-size: 4em;
+  }
+}
+
+@media (max-width: 1250px) {
+  .destaque {
+    font-size: 3.5em;
+  }
+}
+
+@media (max-width: 1126px) {
+  .form-container {
+    display: inline-flex;
+    flex-direction: column;
+  }
+  .content-1 {
+    width: 100%;
+  }
+  .toggle-container {
+    width: 100%;
+  }
+
+  .content-2 {
+    display: none !important;
+  }
+  .destaque-mobile {
+    font-size: 3em;
+    color: white;
+    text-transform: uppercase;
+    text-align: right;
+  }
+  .content-2-mobile {
+    display: flex;
+    padding: 50px;
+    background-image: url(./assets/home-img.png);
+    background-size: cover;
+    background-position: center;
+  }
+  .toggle-container {
+    bottom: 72px;
+    left: 51px;
+  }
 }
