@@ -7,44 +7,51 @@
     <title>Churrascômetro</title>
   </head>
   <body>
-    <section class="toggle-container">
-        <input type="checkbox" class="checkbox" id="checkbox" />
-        <label class="label" for="checkbox">
-          <i class="fas fa-moon"></i>
-          <i class="fas fa-sun"></i>
-          <div class="ball"></div>
-        </label>
-    </section>
+    <!-- <section class="toggle-container">
+      <input type="checkbox" class="checkbox" id="checkbox" />
+      <label class="label" for="checkbox">
+        <i class="fas fa-moon"></i>
+        <i class="fas fa-sun"></i>
+        <div class="ball"></div>
+      </label>
+    </section> -->
 
     <section class="form-container">
-      <h1>title</h1>
-      <p>
-        aceito receber e-mails com promoçõesaceito receber e-mails com
-        promoçõesaceito receber e-mails com promoções
-      </p>
-      <div class="form-content">
-        <label for="nome">nome</label>
-        <input type="text" name="nome" id="nome" />
+      <div class="content-1">
+        <h1 class="title">MuuuuuuLovers</h1>
+        <p class="frase">Cadastre seu email e receba dicas.</p>
 
-        <label for="email">email</label>
-        <input type="email" name="email" id="email" required />
+        <form class="container-form">
+          <label for="nome">Nome*</label><br />
+          <input type="text" id="nome" required /><br />
 
-        <label for="cep">cep</label>
-        <input type="number" name="cep" id="cep" />
-        <div class="checkbox-content">
-          <p>
-            <input type="checkbox" id="" checked /> aceito receber
-            e-mails com promoções
-          </p>
-        </div>
+          <label for="email">Email*</label><br />
+          <input type="email" id="email" required /><br />
+
+          <label for="cep">CEP</label><br />
+          <input type="cep" id="cep" /><br />
+
+          <div class="container-checkbox">
+            <input type="checkbox" id="concordo" checked />
+            <label for="concordo" class="checkbox-btn"
+              >Eu concordo com a Política de Privacidade.</label
+            >
+          </div>
+
+          <button class="botao-primario" id="botao-cadastrar">Enviar</button>
+        </form>
       </div>
-      <button>cadastrar</button>
+      <div class="content-2">
+        <h1 class="destaque">
+          suculenta & mal passada & ponto menos & muuuuuu
+        </h1>
+      </div>
     </section>
 
     <script src="script.js"></script>
     <script
-    src="https://kit.fontawesome.com/998c60ef77.js"
-    crossorigin="anonymous"
-  ></script>
+      src="https://kit.fontawesome.com/998c60ef77.js"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>

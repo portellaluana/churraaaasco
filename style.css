@@ -1,29 +1,39 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@200;400;900&display=swap");
+
 :root {
-    --cinza-escuro: #3d3d3d;
-    --cinza-medio: #949494;
-    --cinza-claro: #f8f8f8;
-    --sun: #f39c12;
-  }
+  --cinza-escuro: #3d3d3d;
+  --cinza-medio: #949494;
+  --cinza-claro: #f0e0c5;
+  --sun: #f39c12;
+  --red-normal: #8a1b24;
+  --red-escuro: #491118;
+}
 
-  * {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    box-sizing: border-box;
-  }
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
 
-body{
-    width: 100vw;
-    height: 100vh;
-    display: inline-flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--cinza-claro);
-    transition: background 0.2s linear;
-    margin: 0;
-    padding: 0;
+body {
+  width: 100vw;
+  height: 100vh;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  transition: background 0.2s linear;
+  margin: 0;
+  padding: 0;
   color: var(--cinza-escuro);
+  font-family: "Inter", sans-serif;
+}
+
+.title, .frase{
+  text-align: center;
+  margin: 4px;
 }
 
 body.dark {
@@ -31,26 +41,61 @@ body.dark {
   color: var(--cinza-claro);
 }
 
-.form-container, .toggle-container{
-    max-width: 1080px;
-    width: 100%;
-    display: inline-flex;
-    flex-direction: column;
-    align-items: center;
+.toggle-container {
+  max-width: 1080px;
+  width: 100%;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.toggle-container{
-    align-items: end;
+.toggle-container {
+  align-items: end;
 }
 
-
-.form-content{
-    display: inline-flex;
-    flex-direction: column;
+.form-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+.botao-primario {
+  font-weight: 900;
+  font-size: 20px;
+  color: white;
+  background-color: var(--red-normal);
+  width: 100%;
+  padding: 8px;
+  border-radius: 4px;
+  margin-top: 16px;
+  height: 48px;
+  cursor: pointer;
+}
+
+.content-1 {
+  width: 40%;
+  padding: 100px;
+}
+
+.content-2 {
+  width: 60%;
+  padding: 100px;
+  background-image: url(./assets/home-img.png);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+}
+
+.destaque {
+  color: white;
+  font-size: 72px;
+  text-align: right;
+  display: flex;
+  text-transform: uppercase;
+}
 /* toggle-theme */
-@import url("https://fonts.googleapis.com/css?family=Muli&display=swap");
 
 .checkbox {
   opacity: 0;
@@ -95,5 +140,92 @@ body.dark {
 .fa-sun {
   color: var(--sun);
 }
-/* dark: 212121 */
-/* light: F8F8F8 */
+
+
+
+/* contato */
+.container-form label {
+  color: var(--cinza-escuro);
+  font-size: 0.8rem;
+}
+
+.container-form {
+  display: block;
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1rem;
+}
+
+.container-form input,
+textarea,
+select {
+  background-color: white;
+  border: solid 1px var(--cinza-claro);
+  border-radius: 2px;
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 8px;
+  color: #8a1b24;
+  font-weight: 700;
+}
+
+.container-form input:focus,
+select:focus,
+textarea:focus {
+  box-shadow: 0 0 0 0;
+  border: 0 none;
+  outline: 0;
+  border: solid 1px var(--red-normal);
+}
+
+textarea {
+  height: 100px;
+}
+
+select {
+  width: 100px;
+  margin-right: 1rem;
+  height: 1.8rem;
+}
+
+.container-checkbox {
+  display: flex;
+  width: 400px;
+  align-items: center;
+}
+
+#concordo {
+  width: 1rem;
+  margin-right: 0.5rem;
+}
+
+.checkbox-btn {
+  padding-bottom: 1rem;
+  font-size: 0.8rem;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  opacity: 100;
+}
+
+input[type="checkbox"] + label {
+  position: relative;
+  cursor: pointer;
+  padding-left: 30px;
+}
+
+.btn-enviar {
+  font-family: "Montserrat", sans-serif;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: white;
+  background-color: var(--red-normal);
+  border: solid 1px var(--red-normal);
+  border-radius: 100px;
+  padding: 0.8rem 4rem;
+  width: 100%;
+  cursor: pointer;
+}
