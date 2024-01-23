@@ -1,0 +1,99 @@
+:root {
+    --cinza-escuro: #3d3d3d;
+    --cinza-medio: #949494;
+    --cinza-claro: #f8f8f8;
+    --sun: #f39c12;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+  }
+
+body{
+    width: 100vw;
+    height: 100vh;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--cinza-claro);
+    transition: background 0.2s linear;
+    margin: 0;
+    padding: 0;
+  color: var(--cinza-escuro);
+}
+
+body.dark {
+  background: var(--cinza-escuro);
+  color: var(--cinza-claro);
+}
+
+.form-container, .toggle-container{
+    max-width: 1080px;
+    width: 100%;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.toggle-container{
+    align-items: end;
+}
+
+
+.form-content{
+    display: inline-flex;
+    flex-direction: column;
+}
+
+/* toggle-theme */
+@import url("https://fonts.googleapis.com/css?family=Muli&display=swap");
+
+.checkbox {
+  opacity: 0;
+  position: absolute;
+}
+
+.label {
+  background-color: var(--cinza-medio);
+  border-radius: 50px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid var(--cinza-claro);
+  padding: 5px;
+  position: relative;
+  height: 26px;
+  width: 50px;
+  transform: scale(1.5);
+}
+
+.label .ball {
+  background-color: var(--cinza-claro);
+  border-radius: 50%;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  height: 20px;
+  width: 20px;
+  transform: translateX(0px);
+  transition: transform 0.2s linear;
+}
+
+.checkbox:checked + .label .ball {
+  transform: translateX(24px);
+}
+
+.fa-moon {
+  color: var(--cinza-claro);
+}
+
+.fa-sun {
+  color: var(--sun);
+}
+/* dark: 212121 */
+/* light: F8F8F8 */
