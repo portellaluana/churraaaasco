@@ -57,6 +57,7 @@ body.dark {
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100vw;
 }
 
 .botao-primario {
@@ -86,6 +87,7 @@ body.dark {
   align-items: center;
   background-size: cover;
   background-position: center;
+  justify-content: end;
 }
 
 .destaque {
@@ -94,6 +96,7 @@ body.dark {
   text-align: right;
   display: flex;
   text-transform: uppercase;
+  max-width: 70%;
 }
 /* toggle-theme */
 
