@@ -33,12 +33,35 @@ botaoCadastrar.addEventListener("click", function (e) {
   dadosUsuarios.push("dadoUsuario", dadoUsuario);
   localStorage.setItem("usuários", dadosUsuarios);
 
-  sectionUsuario.style.display = "none";
-  sectionPessoas.style.display = "inline-flex";
-  sectionPessoas.style.flexDirection = "column";
+  let cepVerificado;
+  
+  fetchCep(cep)
+    .then((CEP) => {
+      cepVerificado = CEP;
+        sectionUsuario.style.display = "none";
+        sectionPessoas.style.display = "inline-flex";
+        sectionPessoas.style.flexDirection = "column";
+      
+    })
+    .catch((error) => {
+      console.error("error");
+    });
 
   e.preventDefault();
 });
+
+const fetchCep = async (cep,e) => {
+  try {
+    const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+    const CEP = await response.json();
+    return CEP;
+  } catch (error) {
+    alert('cep não encontrado')
+    //colocar aviso no input
+  }
+  e.preventDefault();
+
+};
 
 botaoEnviar.addEventListener("click", function (e) {
   const homem = inputHomem.value;
