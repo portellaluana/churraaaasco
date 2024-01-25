@@ -3,7 +3,8 @@
 :root {
   --cinza-escuro: #3d3d3d;
   --cinza-medio: #949494;
-  --cinza-claro: #f0e0c5;
+  --cinza-claro: #e2e2e2;
+  --line: #f0e0c5;
   --sun: #f39c12;
   --red-normal: #8a1b24;
   --red-escuro: #491118;
@@ -40,11 +41,11 @@ body {
 
 body.dark {
   background: var(--red-escuro);
-  color: var(--cinza-claro);
+  color: var(--line);
 }
 
 .font-light {
-  color: var(--cinza-claro);
+  color: var(--line);
 }
 
 .toggle-container {
@@ -77,6 +78,20 @@ body.dark {
   text-transform: lowercase;
 }
 
+.botao-disable {
+  font-weight: 900;
+  font-size: 16px;
+  color: white;
+  background-color: var(--cinza-escuro);
+  width: 100%;
+  padding: 8px;
+  border-radius: 4px;
+  margin-top: 16px;
+  height: 48px;
+  cursor: pointer;
+  text-transform: lowercase;
+opacity: .3;
+}
 .content-1 {
   width: 40%;
   padding: 100px;
@@ -137,14 +152,14 @@ body.dark {
 }
 
 .fa-moon {
-  color: var(--cinza-claro);
+  color: var(--line);
   position: absolute;
   top: 4px;
   left: 27px;
 }
 
 .fa-sun {
-  color: var(--cinza-claro);
+  color: var(--line);
   position: absolute;
   content: "\f185";
   left: 4px;
@@ -172,7 +187,7 @@ label {
 textarea,
 select {
   background-color: transparent;
-  border: solid 1px var(--cinza-claro);
+  border: solid 1px var(--line);
   border-radius: 4px;
   width: 100%;
   margin-bottom: 1rem;
@@ -182,7 +197,7 @@ select {
 }
 
 .input-dark {
-  color: var(--cinza-claro) !important;
+  color: var(--line) !important;
 }
 
 .container-form input:focus,
@@ -213,9 +228,6 @@ select {
 #concordo {
   width: 1rem;
   margin-right: 0.5rem;
-}
-input[type="checkbox"] {
-  background-color: var(--red-normal) !important;
 }
 
 .checkbox-btn {
@@ -277,7 +289,7 @@ input[type="checkbox"] {
   }
   .content-1,
   .pessoas-container {
-    padding: 50px;
+    padding: 50px 0;
   }
   .toggle-container {
     bottom: 27px;

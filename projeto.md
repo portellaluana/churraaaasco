@@ -6,12 +6,12 @@ O objetivo desta atividade é desenvolver uma calculadora chamada "Churrascômet
 
 Requisitos
 
-1. O primeiro passo deve exibir 4 campos para digitar "nome, e-mail e CEP além de checkbox de consentimento com o texto "aceito receber e-mails com promoções".
+OK -> 1. O primeiro passo deve exibir 4 campos para digitar "nome, e-mail e CEP além de checkbox de consentimento com o texto "aceito receber e-mails com promoções".
 
-- Os campos "nome", "e-mail" e CEP devem ser obrigatórios;
-- O campo "e-mail" deve conter um e-mail válido;
-- O checkbox deve ser carregado marcado automaticamente;
-- Caso algum campo esteja inválido, deve haver uma indicação visual na tela;
+OK -> - Os campos "nome", "e-mail" e CEP devem ser obrigatórios;
+OK -> - O campo "e-mail" deve conter um e-mail válido;
+OK -> - O checkbox deve ser carregado marcado automaticamente;
+OK -> - Caso algum campo esteja inválido, deve haver uma indicação visual na tela;
 - Uma vez que o usuário já tenha preenchido estes campos, não devemos solicitá-los novamente após a página ser recarregada.
 
 2. O passo seguinte deve conter 3 ou 4 campos para indicar a quantidade de pessoas entre (homens, mulheres/adultos, crianças e pessoas que bebem bebidas alcoólicas).

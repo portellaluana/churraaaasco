@@ -18,6 +18,16 @@ const sectionUsuario = document.querySelector(".content-1");
 const sectionPessoas = document.querySelector(".pessoas-container");
 const dadosUsuarios = [];
 
+let emailVerificado = false;
+let inputValidado = false;
+let cepVerificado = false;
+
+if(localStorage.getItem("usuários") ){
+  sectionUsuario.style.display = "none";
+  sectionPessoas.style.display = "inline-flex";
+  sectionPessoas.style.flexDirection = "column";
+}
+
 botaoCadastrar.addEventListener("click", function (e) {
   const nome = inputNome.value;
   const email = inputEmail.value;
@@ -33,41 +43,42 @@ botaoCadastrar.addEventListener("click", function (e) {
   dadosUsuarios.push("dadoUsuario", dadoUsuario);
   localStorage.setItem("usuários", dadosUsuarios);
 
-  let cepVerificado;
-  
+
   fetchCep(cep)
     .then((CEP) => {
-      cepVerificado = CEP;
-        sectionUsuario.style.display = "none";
-        sectionPessoas.style.display = "inline-flex";
-        sectionPessoas.style.flexDirection = "column";
-      
+      cepVerificado = true
+
+
     })
     .catch((error) => {
       console.error("error");
     });
 
+if(cepVerificado && emailVerificado && inputValidado){
+  sectionUsuario.style.display = "none";
+  sectionPessoas.style.display = "inline-flex";
+  sectionPessoas.style.flexDirection = "column";
+}
   e.preventDefault();
 });
 
-const fetchCep = async (cep,e) => {
+const fetchCep = async (cep, e) => {
   try {
     const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
     const CEP = await response.json();
     return CEP;
   } catch (error) {
-    alert('cep não encontrado')
+    alert("cep não encontrado");
     //colocar aviso no input
   }
   e.preventDefault();
-
 };
 
 botaoEnviar.addEventListener("click", function (e) {
-  const homem = inputHomem.value;
-  const mulher = inputMulher.value;
-  const crianca = inputCrianca.value;
-  const bebida = inputBebida.value;
+  let homem = inputHomem.value.replace(/[^0-9]/g, '');
+  let mulher = inputMulher.value.replace(/[^0-9]/g, '');
+  let crianca = inputCrianca.value.replace(/[^0-9]/g, '');
+  let bebida = inputBebida.value.replace(/[^0-9]/g, '');
 
   console.log("homem", homem);
   console.log("mulher", mulher);
@@ -88,3 +99,23 @@ checkbox.addEventListener("change", function () {
     item.classList.toggle("input-dark");
   }
 });
+
+function validaInputs() {
+  if (inputNome.value != "" && inputCEP.value != "") {
+    botaoCadastrar.classList.add("botao-primario");
+    botaoCadastrar.classList.remove("botao-disable");
+    botaoCadastrar.disabled = false;
+    inputValidado = true
+  }
+}
+
+function verificaEmail() {
+  const email = inputEmail.value;
+  const verifica = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (!verifica.test(email)) {
+    alert('email invalido')
+  } else {
+    emailVerificado = true
+  }
+}
