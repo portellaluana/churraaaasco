@@ -41,9 +41,7 @@ botaoCadastrar.addEventListener("click", function (e) {
 
   let dadoUsuario = JSON.stringify(cadastro);
   dadosUsuarios.push("dadoUsuario", dadoUsuario);
-  localStorage.setItem("usuários", dadosUsuarios);
-
-
+  
   fetchCep(cep)
     .then((CEP) => {
       cepVerificado = true
@@ -58,6 +56,7 @@ if(cepVerificado && emailVerificado && inputValidado){
   sectionUsuario.style.display = "none";
   sectionPessoas.style.display = "inline-flex";
   sectionPessoas.style.flexDirection = "column";
+  localStorage.setItem("usuários", dadosUsuarios);
 }
   e.preventDefault();
 });
