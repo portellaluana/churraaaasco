@@ -1,3 +1,15 @@
+/* .label-container-form {
+  margin-bottom: 0.5rem;
+}
+
+.email-error {
+  font-size: 0.7rem;
+  position: relative;
+  bottom: 14px;
+  color: var(--red-normal);
+  opacity: 0;
+} */
+
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@200;400;900&display=swap");
 
 :root {
