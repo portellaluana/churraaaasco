@@ -30,15 +30,34 @@
         <p class="frase">Cadastre seu email e receba dicas.</p>
 
         <form class="container-form">
-          <label for="nome">Nome*</label><br />
-          <input type="text" id="nome" required onchange="validaInputs()"/><br />
-
-          <label for="email">Email*</label><br />
-          <input type="email" id="email" required onchange="verificaEmail()"/><br />
-
-          <label for="cep">CEP</label><br />
-          <input type="number" id="cep" required onchange="validaInputs()" /><br />
-
+          <div class="label-container-form">
+            <label for="nome">Nome*</label><br />
+            <input
+              type="text"
+              id="nome"
+              required
+              onchange="validaInputs()"
+            /><br />
+          </div>
+          <div class="label-container-form">
+            <label for="email">Email*</label><br />
+            <input
+              type="email"
+              id="email"
+              required
+              onchange="verificaEmail()"
+            /><br />
+            <p class="email-error">Email inválido</p>
+          </div>
+          <div class="label-container-form">
+            <label for="cep">CEP</label><br />
+            <input
+              type="number"
+              id="cep"
+              required
+              onchange="validaInputs()"
+            /><br />
+          </div>
           <div class="container-checkbox">
             <input type="checkbox" id="concordo" checked />
             <label for="concordo" class="checkbox-btn"
@@ -46,7 +65,9 @@
             >
           </div>
 
-          <button class="botao-disable" id="botao-cadastrar" disabled>Cadastrar</button>
+          <button class="botao-disable" id="botao-cadastrar" disabled>
+            Cadastrar
+          </button>
         </form>
       </div>
 
@@ -58,22 +79,22 @@
         <form class="container-form-convidados">
           <div class="input-homens-content">
             <label for="homem">Quantos homens?</label><br />
-            <input type="number" id="homem" placeholder="0"/><br />
+            <input type="number" id="homem" placeholder="0" /><br />
           </div>
 
           <div class="input-mulheres-content">
             <label for="mulher">Quantas mulheres?</label><br />
-            <input type="number" id="mulher" placeholder="0"/><br />
+            <input type="number" id="mulher" placeholder="0" /><br />
           </div>
 
           <div class="input-crianças-content">
             <label for="criança">Quantas crianças?</label><br />
-            <input type="number" id="criança" placeholder="0"/><br />
+            <input type="number" id="criança" placeholder="0" /><br />
           </div>
 
           <div class="input-bebidas-content">
             <label for="bebidas">Quantas pessoas bebem?</label><br />
-            <input type="number" id="bebidas" placeholder="0"/><br />
+            <input type="number" id="bebidas" placeholder="0" /><br />
           </div>
 
           <button class="botao-primario" id="botao-enviar">Enviar</button>
