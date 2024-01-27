@@ -12,9 +12,9 @@ OK -> - Os campos "nome", "e-mail" e CEP devem ser obrigatórios;
 OK -> - O campo "e-mail" deve conter um e-mail válido;
 OK -> - O checkbox deve ser carregado marcado automaticamente;
 OK -> - Caso algum campo esteja inválido, deve haver uma indicação visual na tela;
-- Uma vez que o usuário já tenha preenchido estes campos, não devemos solicitá-los novamente após a página ser recarregada.
+OK -> - Uma vez que o usuário já tenha preenchido estes campos, não devemos solicitá-los novamente após a página ser recarregada.
 
-2. O passo seguinte deve conter 3 ou 4 campos para indicar a quantidade de pessoas entre (homens, mulheres/adultos, crianças e pessoas que bebem bebidas alcoólicas).
+OK -> 2. O passo seguinte deve conter 3 ou 4 campos para indicar a quantidade de pessoas entre (homens, mulheres/adultos, crianças e pessoas que bebem bebidas alcoólicas).
 
 - Os campos devem permitir somente inteiros não negativos;
 

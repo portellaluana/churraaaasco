@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/x-icon" href="./assets/favicon.png">
     <title>MuuuuuuLovers</title>
   </head>
   <body>
@@ -38,6 +39,8 @@
               required
               onchange="validaInputs()"
             /><br />
+            <p class="nome-error">Campo obrigatório</p>
+
           </div>
           <div class="label-container-form">
             <label for="email">Email*</label><br />
@@ -57,6 +60,7 @@
               required
               onchange="validaInputs()"
             /><br />
+            <p class="cep-error">CEP inválido</p>
           </div>
           <div class="container-checkbox">
             <input type="checkbox" id="concordo" checked />
@@ -79,25 +83,28 @@
         <form class="container-form-convidados">
           <div class="input-homens-content">
             <label for="homem">Quantos homens?</label><br />
-            <input type="number" id="homem" placeholder="0" /><br />
-          </div>
+            <input type="number" id="homem"  placeholder="0" class="input-error" onchange="valorInput()"/><br />
+                 </div>
 
           <div class="input-mulheres-content">
             <label for="mulher">Quantas mulheres?</label><br />
-            <input type="number" id="mulher" placeholder="0" /><br />
+            <input type="number" id="mulher" placeholder="0" class="input-error" onchange="valorInput()" /><br />
+
           </div>
 
           <div class="input-crianças-content">
             <label for="criança">Quantas crianças?</label><br />
-            <input type="number" id="criança" placeholder="0" /><br />
+            <input type="number" id="criança" placeholder="0" class="input-error" onchange="valorInput()" /><br />
+
           </div>
 
           <div class="input-bebidas-content">
             <label for="bebidas">Quantas pessoas bebem?</label><br />
-            <input type="number" id="bebidas" placeholder="0" /><br />
+            <input type="number" id="bebidas" placeholder="0" class="input-error" onchange="valorInput()" /><br />
+
           </div>
 
-          <button class="botao-primario" id="botao-enviar">Enviar</button>
+          <button class="botao-disable" id="botao-enviar">Enviar</button>
         </form>
       </div>
 
