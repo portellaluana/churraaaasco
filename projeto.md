@@ -18,7 +18,7 @@ OK -> 2. O passo seguinte deve conter 3 ou 4 campos para indicar a quantidade de
 
 OK -> - Os campos devem permitir somente inteiros não negativos;
 
-3. O terceiro passo deve exibir uma tabela com o resultado do cálculo com a quantidade indicada para cada um dos itens. Os itens são: carne, cerveja, sal grosso, refrigerante, água, carvão, gelo e pão de alho.
+OK -> 3. O terceiro passo deve exibir uma tabela com o resultado do cálculo com a quantidade indicada para cada um dos itens. Os itens são: carne, cerveja, sal grosso, refrigerante, água, carvão, gelo e pão de alho.
 
 - Tabela de referência(sugestão)
 - Carne
@@ -43,9 +43,9 @@ OK -> - Os campos devem permitir somente inteiros não negativos;
 
 Critérios
 
-1. A calculadora deve funcionar corretamente e atender aos requisitos especificados;
-2. O código deve fazer uso de seletores e métodos para manipulação do DOM;
-3. O código deve fazer uso de adição e remoção de classes e estilização através do Javascript;
-4. O código deve fazer uso de eventos ligados aos elementos da página;
-5. O código deve fazer uso de armazenamento no browser (Web Storage API);
-6. O código deve fazer uso de chamadas assíncronas e seus derivados.
+1. A calculadora deve funcionar corretamente e atender aos requisitos especificados; - OK
+2. O código deve fazer uso de seletores e métodos para manipulação do DOM; - OK
+3. O código deve fazer uso de adição e remoção de classes e estilização através do Javascript; - OK
+4. O código deve fazer uso de eventos ligados aos elementos da página; - OK
+5. O código deve fazer uso de armazenamento no browser (Web Storage API); - OK
+6. O código deve fazer uso de chamadas assíncronas e seus derivados. - OK

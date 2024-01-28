@@ -224,18 +224,13 @@ text-align: center;
   margin-bottom: 0.2rem;
 }
 
-.nome-error,
 .email-error,
-.cep-error,
-.homem-error,
-.mulher-error,
-.crianca-error,
-.bebida-error {
+.cep-error, .nome-error {
   font-size: 0.7rem;
   position: relative;
   bottom: 14px;
   color: var(--red-normal);
-  opacity: 0;
+display: none;
 }
 
 .container-form input,
@@ -346,7 +341,7 @@ select {
   .content-1 {
     width: 100%;
   }
-  .pessoas-container {
+  .pessoas-container, .container-resultado {
     width: 50%;
   }
   .toggle-container {
@@ -378,7 +373,7 @@ select {
   .destaque-mobile {
     font-size: 2em;
   }
-  .pessoas-container {
+  .pessoas-container, .container-resultado {
     padding: 50px 0;
   }
   .toggle-container {
@@ -388,6 +383,6 @@ select {
 }
 
 /* quantidade-pessoas */
-.pessoas-container {
+.pessoas-container, .container-resultado {
   display: none;
 }

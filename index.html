@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
     <link rel="icon" type="image/x-icon" href="./assets/favicon.png" />
-    <title>MuuuuuuLovers</title>
+    <title>uuuuLovers</title>
   </head>
   <body>
     <section class="home-container" id="home">
@@ -141,6 +141,7 @@
                 onchange="valorInput()"
                 readonly
               />
+              
               <button for="bebidas" class="mais mais-bebida">+</button>
             </div>
           </div>
@@ -151,21 +152,24 @@
 
       <div class="container-resultado container-form">
         <h1 class="title">Confira a lista de itens de um churrasco pra <span class="numero-convidados"></span></h1>
-        <p class="linha-convidados"><span class="numero-homens"></span>
-          <span class="numero-mulheres"></span>
-            <span class="numero-criancas"></span>
+        <p class="linha-convidados">
+
          </p>
         <table>
           <tr>
             <th>ITEM</th>
             <th>QUANTIDADE</th>
           </tr>
-          <!-- <tr>
-            <td data-th="item">Carne</td>
-            <td data-th="quantidade">1400 gramas</td>
-          </tr> -->
+          <tr class="carne"></tr>
+          <tr class="pao-alho"></tr>
+          <tr class="carvao"></tr>
+          <tr class="sal"></tr>
+          <tr class="gelo"></tr>
+          <tr class="refri"></tr>
+          <tr class="agua"></tr>
+          <tr class="cerveja"></tr>
         </table>
-        <button class="botao-disable" id="botao-enviar">Enviar</button>
+        <button class="botao-primario" id="botao-enviar" onClick="window.location.reload()">Recalcular</button>
       </div>
 
       <div class="content-2">

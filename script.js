@@ -44,7 +44,7 @@ botaoCadastrar.addEventListener("click", function (e) {
       cepVerificado = true;
     })
     .catch((error) => {
-      cepError.style.opacity = 1;
+      cepError.style.display = 'flex';
     });
 
   if (cepVerificado && emailVerificado && inputValidado) {
@@ -84,6 +84,10 @@ function validaInputs() {
     botaoCadastrar.disabled = false;
     inputValidado = true;
   }
+  if(inputNome.value === ''){
+    let error = document.querySelector('.nome-error');
+    error.style.display = 'flex'
+  } else error.style.display = 'none'
 }
 
 function verificaEmail() {
@@ -92,10 +96,10 @@ function verificaEmail() {
   const emailError = document.querySelector(".email-error");
 
   if (!verifica.test(email)) {
-    emailError.style.opacity = 1;
+    emailError.style.display = 'flex';
   } else {
     emailVerificado = true;
-    emailError.style.opacity = 0;
+    emailError.style.display = 'none';
   }
 }
 
@@ -150,7 +154,6 @@ function atualizaInput() {
   inputBebida.value = get("bebida");
   valorInput();
 }
-
 function valorInput() {
   let inputs = document.querySelectorAll(".input-value");
 
@@ -165,9 +168,7 @@ function valorInput() {
 
     if (
       inputHomem.value != 0 ||
-      inputMulher.value != 0 ||
-      inputCrianca.value != 0 ||
-      inputBebida.value != 0
+      inputMulher.value != 0
     ) {
       botaoEnviar.classList.add("botao-primario");
       botaoEnviar.classList.remove("botao-disable");
@@ -209,70 +210,128 @@ let cerveja = {
 };
 
 botaoEnviar.addEventListener("click", function (e) {
-  let totalPessoas =
-    Number(inputHomem.value) +
-    Number(inputMulher.value) +
-    Number(inputCrianca.value);
+
+  let totalPessoas = Number(inputHomem.value) + Number(inputMulher.value) + Number(inputCrianca.value);
   let totalAdultos = Number(inputHomem.value) + Number(inputMulher.value);
-
-  let totalCarne =
-    Number(inputHomem.value) * 400 +
-    Number(inputMulher.value) * 320 +
-    Number(inputCrianca.value) * 200;
-  console.log("totalCarne", totalCarne + "gramas de carne");
-
+  
+  let totalCarne = Number(inputHomem.value) * 400 + Number(inputMulher.value) * 320 + Number(inputCrianca.value) * 200;
   let totalPaoAlho = Number(totalAdultos) * 2 + Number(inputCrianca.value) * 1;
-  console.log("totalPaoAlho", totalPaoAlho + "pães de alho");
-
-  let totalCarvao = Number(totalPessoas);
-  console.log("totalCarvao", totalCarvao + "sacos de carvão");
-
-  let totalSal = Number(totalPessoas) * 0.04;
-  console.log("totalSal", totalSal + "gramas de sal");
-
-  let totalGelo = Number(totalPessoas) * 0.5;
-  console.log("totalGelo", totalGelo);
-
-  let totalRefri = Number(totalPessoas) * 0.4;
-  console.log("totalRefri", totalRefri + "litros de refri");
-
-  let totalAgua = Number(totalPessoas) * 0.2;
-  console.log("totalAgua", totalAgua + "litros de água");
-
-  let totalCerveja = Number(totalAdultos) * 3;
-  console.log("totalCerveja", totalCerveja + "garrafas");
+  let  totalCarvao = Number(totalPessoas);
+  let  totalSal = Number(totalPessoas) * 0.04;
+  let  totalGelo = Number(totalPessoas) * 0.5;
+  let  totalRefri = Number(totalPessoas) * 400;
+  let  totalAgua = Number(totalPessoas) * 200;
+  let  totalCerveja = Number(inputBebida.value) * 3;
 
   let numerosConvidados = document.querySelector(".numero-convidados");
+
+  let convidados = document.querySelector('.linha-convidados')
+
   if (totalPessoas > 1) {
     numerosConvidados.textContent = totalPessoas + " pessoas";
   } else numerosConvidados.textContent = totalPessoas + " pessoa";
 
-  let numeroHomens = document.querySelector(".numero-homens");
-  let numeroMulheres = document.querySelector(".numero-mulheres");
-  let numeroCriancas = document.querySelector(".numero-criancas");
+  let homens = document.createElement('span');
+  convidados.appendChild(homens)
+  homens.classList.add('numero-homens')
+
+  let mulheres = document.createElement('span');
+  convidados.appendChild(mulheres)
+  mulheres.classList.add('numero-mulheres')
+
+  let criancas = document.createElement('span');
+  convidados.appendChild(criancas)
+  criancas.classList.add('numero-criancas')
 
   if (inputHomem.value > 1) {
-    numeroHomens.textContent = inputHomem.value + " homens";
+    homens.textContent = inputHomem.value + " homens";
   }
   if (inputHomem.value == 1) {
-    numeroHomens.textContent = inputHomem.value + " homem";
+    homens.textContent = inputHomem.value + " homem";
   }
   if (inputMulher.value > 1) {
-    numeroMulheres.textContent = inputMulher.value + " mulheres";
+    mulheres.textContent = inputMulher.value + " mulheres";
   }
   if (inputMulher.value == 1) {
-    numeroMulheres.textContent = inputMulher.value + " mulher";
+    mulheres.textContent = inputMulher.value + " mulher";
   }
   if (inputCrianca.value > 1) {
-    numeroCriancas.textContent = inputCrianca.value + " crianças";
+    criancas.textContent = inputCrianca.value + " crianças";
   }
   if (inputCrianca.value == 1) {
-    numeroCriancas.textContent = inputCrianca.value + " criança";
+    criancas.textContent = inputCrianca.value + " criança";
   }
+
   let secttionResultado = document.querySelector(".container-resultado");
   secttionResultado.style.display = "block";
   sectionUsuario.style.display = "none";
   sectionPessoas.style.display = "none";
 
+  let itemCarne = document.querySelector('.carne');
+  let Carne = document.createElement('td');
+  let qntCarne = document.createElement('td');
+  itemCarne.appendChild(Carne)
+  itemCarne.appendChild(qntCarne)
+  Carne.innerHTML = `<td >Carne</td>`;
+  qntCarne.innerHTML = `<td >${totalCarne} g</td>`;
+
+  let itemPaoAlho = document.querySelector('.pao-alho');
+  let paoAlho = document.createElement('td');
+  let qntPaoAlho = document.createElement('td');
+  itemPaoAlho.appendChild(paoAlho)
+  itemPaoAlho.appendChild(qntPaoAlho)
+  paoAlho.innerHTML = `<td >Pão de alho</td>`;
+  qntPaoAlho.innerHTML = `<td >${totalPaoAlho} unidades</td>`;
+
+  let itemCarvao = document.querySelector('.carvao');
+  let carvao = document.createElement('td');
+  let qntCarvao = document.createElement('td');
+  itemCarvao.appendChild(carvao)
+  itemCarvao.appendChild(qntCarvao)
+  carvao.innerHTML = `<td >Carvão</td>`;
+  qntCarvao.innerHTML = `<td >${totalCarvao} kg</td>`;
+
+  let itemSal = document.querySelector('.sal');
+  let sal = document.createElement('td');
+  let qntSal = document.createElement('td');
+  itemSal.appendChild(sal)
+  itemSal.appendChild(qntSal)
+  sal.innerHTML = `<td >Sal</td>`;
+  qntSal.innerHTML = `<td >${totalSal} g</td>`;
+ 
+  let itemGelo = document.querySelector('.gelo');
+  let gelo = document.createElement('td');
+  let qntGelo = document.createElement('td');
+  itemGelo.appendChild(gelo)
+  itemGelo.appendChild(qntGelo)
+  gelo.innerHTML = `<td >Gelo</td>`;
+  qntGelo.innerHTML = `<td >${totalGelo} saco</td>`;
+
+  let itemRefri = document.querySelector('.refri');
+  let refri = document.createElement('td');
+  let qntRefri = document.createElement('td');
+  itemRefri.appendChild(refri)
+  itemRefri.appendChild(qntRefri)
+  refri.innerHTML = `<td >Refrigerante</td>`;
+  qntRefri.innerHTML = `<td >${totalRefri} ml</td>`;
+
+  let itemAgua = document.querySelector('.agua');
+  let agua = document.createElement('td');
+  let qntAgua = document.createElement('td');
+  itemAgua.appendChild(agua)
+  itemAgua.appendChild(qntAgua)
+  agua.innerHTML = `<td >Água</td>`;
+  qntAgua.innerHTML = `<td >${totalAgua} ml</td>`;
+
+  if(inputBebida.value != 0){
+  let itemCerveja = document.querySelector('.cerveja');
+  let cerveja = document.createElement('td');
+  let qntCerveja = document.createElement('td');
+  itemCerveja.appendChild(cerveja)
+  itemCerveja.appendChild(qntCerveja)
+  cerveja.innerHTML = `<td >Cerveja</td>`;
+  qntCerveja.innerHTML = `<td >${totalCerveja} garrafas</td>`;
+  }
+ 
   e.preventDefault();
 });
