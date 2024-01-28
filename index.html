@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
-    <link rel="icon" type="image/x-icon" href="./assets/favicon.png">
+    <link rel="icon" type="image/x-icon" href="./assets/favicon.png" />
     <title>MuuuuuuLovers</title>
   </head>
   <body>
@@ -17,6 +17,7 @@
           muuuuuu
         </h1>
       </div>
+
       <div class="content-1">
         <div class="toggle-container">
           <input type="checkbox" class="checkbox" id="checkbox" />
@@ -40,7 +41,6 @@
               onchange="validaInputs()"
             /><br />
             <p class="nome-error">Campo obrigatório</p>
-
           </div>
           <div class="label-container-form">
             <label for="email">Email*</label><br />
@@ -80,32 +80,92 @@
           Quantas pessoas vão participar?
         </h1>
 
-        <form class="container-form-convidados">
-          <div class="input-homens-content">
+        <div class="container-form-convidados">
+          <div class="input-container">
             <label for="homem">Quantos homens?</label><br />
-            <input type="number" id="homem"  placeholder="0" class="input-error" onchange="valorInput()"/><br />
-                 </div>
+            <div class="input-content container-form-convidados">
+              <button class="menos menos-homem">-</button>
+              <input
+                type="number"
+                id="input-homem"
+                value="0"
+                class="input-value"
+                onchange="valorInput()"
+                readonly
+              />
+              <button class="mais mais-homem">+</button>
+            </div>
+          </div>
 
-          <div class="input-mulheres-content">
+          <div class="input-container">
             <label for="mulher">Quantas mulheres?</label><br />
-            <input type="number" id="mulher" placeholder="0" class="input-error" onchange="valorInput()" /><br />
-
+            <div class="input-content container-form-convidados">
+              <button class="menos menos-mulher">-</button>
+              <input
+                type="number"
+                id="input-mulher"
+                value="0"
+                class="input-value"
+                onchange="valorInput()"
+                readonly
+              />
+              <button class="mais mais-mulher">+</button>
+            </div>
           </div>
 
-          <div class="input-crianças-content">
-            <label for="criança">Quantas crianças?</label><br />
-            <input type="number" id="criança" placeholder="0" class="input-error" onchange="valorInput()" /><br />
-
+          <div class="input-container">
+            <label for="crianca">Quantas crianças?</label><br />
+            <div class="input-content container-form-convidados">
+              <button class="menos menos-crianca">-</button>
+              <input
+                type="number"
+                id="input-crianca"
+                value="0"
+                class="input-value"
+                onchange="valorInput()"
+                readonly
+              />
+              <button class="mais mais-crianca">+</button>
+            </div>
           </div>
 
-          <div class="input-bebidas-content">
+          <div class="input-container">
             <label for="bebidas">Quantas pessoas bebem?</label><br />
-            <input type="number" id="bebidas" placeholder="0" class="input-error" onchange="valorInput()" /><br />
-
+            <div class="input-content container-form-convidados">
+              <button for="bebidas" class="menos menos-bebida">-</button>
+              <input
+                type="number"
+                id="input-bebida"
+                value="0"
+                class="input-value"
+                onchange="valorInput()"
+                readonly
+              />
+              <button for="bebidas" class="mais mais-bebida">+</button>
+            </div>
           </div>
 
           <button class="botao-disable" id="botao-enviar">Enviar</button>
-        </form>
+        </div>
+      </div>
+
+      <div class="container-resultado container-form">
+        <h1 class="title">Confira a lista de itens de um churrasco pra <span class="numero-convidados"></span></h1>
+        <p class="linha-convidados"><span class="numero-homens"></span>
+          <span class="numero-mulheres"></span>
+            <span class="numero-criancas"></span>
+         </p>
+        <table>
+          <tr>
+            <th>ITEM</th>
+            <th>QUANTIDADE</th>
+          </tr>
+          <!-- <tr>
+            <td data-th="item">Carne</td>
+            <td data-th="quantidade">1400 gramas</td>
+          </tr> -->
+        </table>
+        <button class="botao-disable" id="botao-enviar">Enviar</button>
       </div>
 
       <div class="content-2">

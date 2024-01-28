@@ -16,7 +16,7 @@ OK -> - Uma vez que o usuário já tenha preenchido estes campos, não devemos s
 
 OK -> 2. O passo seguinte deve conter 3 ou 4 campos para indicar a quantidade de pessoas entre (homens, mulheres/adultos, crianças e pessoas que bebem bebidas alcoólicas).
 
-- Os campos devem permitir somente inteiros não negativos;
+OK -> - Os campos devem permitir somente inteiros não negativos;
 
 3. O terceiro passo deve exibir uma tabela com o resultado do cálculo com a quantidade indicada para cada um dos itens. Os itens são: carne, cerveja, sal grosso, refrigerante, água, carvão, gelo e pão de alho.
 
