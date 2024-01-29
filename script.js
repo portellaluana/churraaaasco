@@ -2,7 +2,6 @@ const checkbox = document.getElementById("checkbox");
 const containerForm = document.querySelector(".container-form");
 
 const label = document.getElementsByTagName("label");
-// const input = document.getElementsByTagName("input");
 const inputNome = document.querySelector("#nome");
 const inputEmail = document.querySelector("#email");
 const inputCEP = document.querySelector("#cep");
@@ -23,7 +22,9 @@ if (localStorage.getItem("usuários")) {
   sectionPessoas.style.flexDirection = "column";
 }
 
-botaoCadastrar.addEventListener("click", function (e) {
+botaoCadastrar.addEventListener("click", async function (e) {
+  e.preventDefault();
+
   const nome = inputNome.value;
   const email = inputEmail.value;
   const cep = inputCEP.value;
@@ -39,21 +40,19 @@ botaoCadastrar.addEventListener("click", function (e) {
 
   const cepError = document.querySelector(".cep-error");
 
-  fetchCep(cep)
-    .then((CEP) => {
-      cepVerificado = true;
-    })
-    .catch((error) => {
-      cepError.style.display = 'flex';
-    });
+  try {
+    await fetchCep(cep);
+    cepVerificado = true;
 
-  if (cepVerificado && emailVerificado && inputValidado) {
-    sectionUsuario.style.display = "none";
-    sectionPessoas.style.display = "inline-flex";
-    sectionPessoas.style.flexDirection = "column";
-    localStorage.setItem("usuários", dadosUsuarios);
+    if (cepVerificado && emailVerificado && inputValidado) {
+      sectionUsuario.style.display = "none";
+      sectionPessoas.style.display = "inline-flex";
+      sectionPessoas.style.flexDirection = "column";
+      localStorage.setItem("usuários", JSON.stringify(dadosUsuarios));
+    }
+  } catch (error) {
+    cepError.style.display = "flex";
   }
-  e.preventDefault();
 });
 
 const fetchCep = async (cep, e) => {
@@ -84,10 +83,10 @@ function validaInputs() {
     botaoCadastrar.disabled = false;
     inputValidado = true;
   }
-  if(inputNome.value === ''){
-    let error = document.querySelector('.nome-error');
-    error.style.display = 'flex'
-  } else error.style.display = 'none'
+  if (inputNome.value === "") {
+    let error = document.querySelector(".nome-error");
+    error.style.display = "flex";
+  } else error.style.display = "none";
 }
 
 function verificaEmail() {
@@ -96,10 +95,10 @@ function verificaEmail() {
   const emailError = document.querySelector(".email-error");
 
   if (!verifica.test(email)) {
-    emailError.style.display = 'flex';
+    emailError.style.display = "flex";
   } else {
     emailVerificado = true;
-    emailError.style.display = 'none';
+    emailError.style.display = "none";
   }
 }
 
@@ -166,10 +165,7 @@ function valorInput() {
       item.value = "";
     }
 
-    if (
-      inputHomem.value != 0 ||
-      inputMulher.value != 0
-    ) {
+    if (inputHomem.value != 0 || inputMulher.value != 0) {
       botaoEnviar.classList.add("botao-primario");
       botaoEnviar.classList.remove("botao-disable");
       botaoEnviar.disabled = false;
@@ -181,157 +177,154 @@ function valorInput() {
   }
 }
 
-let carne = {
-  homem: 0.4,
-  mulher: 0.32,
-  crianca: 0.2,
+const ingredientes = {
+  carne: { homem: 0.4, mulher: 0.32, crianca: 0.2 },
+  paoAlho: { adulto: 2, crianca: 1 },
+  carvao: { pessoa: 1 },
+  sal: { pessoa: 0.04 },
+  gelo: { pessoa: 0.5 },
+  refri: { pessoa: 0.4 },
+  agua: { pessoa: 0.2 },
+  cerveja: { adulto: 3 },
 };
-let paoAlho = {
-  adulto: 2,
-  crianca: 1,
+
+const calcularTotal = (quantidade, unidade) => {
+  return (
+    quantidade * ingredientes[unidade][inputBebida.value ? "adulto" : "pessoa"]
+  );
 };
-let carvao = {
-  pessoa: 1,
-};
-let sal = {
-  pessoa: 0.04,
-};
-let gelo = {
-  pessoa: 0.5,
-};
-let refri = {
-  pessoa: 0.4,
-};
-let agua = {
-  pessoa: 0.2,
-};
-let cerveja = {
-  adulto: 3,
+
+const criarElemento = (classe, label, quantidade, unidade) => {
+  const item = document.querySelector(`.${classe}`);
+  const elemento = document.createElement("td");
+  const qntElemento = document.createElement("td");
+
+  item.appendChild(elemento);
+  item.appendChild(qntElemento);
+
+  elemento.innerHTML = `<td>${label}</td>`;
+  qntElemento.innerHTML = `<td>${quantidade} ${ingredientes[unidade].unidade}</td>`;
 };
 
 botaoEnviar.addEventListener("click", function (e) {
+  e.preventDefault();
 
-  let totalPessoas = Number(inputHomem.value) + Number(inputMulher.value) + Number(inputCrianca.value);
+  let totalPessoas =
+    Number(inputHomem.value) +
+    Number(inputMulher.value) +
+    Number(inputCrianca.value);
+
   let totalAdultos = Number(inputHomem.value) + Number(inputMulher.value);
-  
-  let totalCarne = Number(inputHomem.value) * 400 + Number(inputMulher.value) * 320 + Number(inputCrianca.value) * 200;
-  let totalPaoAlho = Number(totalAdultos) * 2 + Number(inputCrianca.value) * 1;
-  let  totalCarvao = Number(totalPessoas);
-  let  totalSal = Number(totalPessoas) * 0.04;
-  let  totalGelo = Number(totalPessoas) * 0.5;
-  let  totalRefri = Number(totalPessoas) * 400;
-  let  totalAgua = Number(totalPessoas) * 200;
-  let  totalCerveja = Number(inputBebida.value) * 3;
 
-  let numerosConvidados = document.querySelector(".numero-convidados");
+  let totalCarne = calcularTotal(totalAdultos, "carne");
+  let totalPaoAlho = calcularTotal(totalAdultos, "paoAlho");
+  let totalCarvao = totalPessoas;
+  let totalSal = totalPessoas * ingredientes.sal.pessoa;
+  let totalGelo = totalPessoas * ingredientes.gelo.pessoa;
+  let totalRefri = totalPessoas * 400;
+  let totalAgua = totalPessoas * 200;
+  let totalCerveja =
+    inputBebida.value !== "0"
+      ? inputBebida.value * ingredientes.cerveja.adulto
+      : 0;
 
-  let convidados = document.querySelector('.linha-convidados')
-
-  if (totalPessoas > 1) {
-    numerosConvidados.textContent = totalPessoas + " pessoas";
-  } else numerosConvidados.textContent = totalPessoas + " pessoa";
-
-  let homens = document.createElement('span');
-  convidados.appendChild(homens)
-  homens.classList.add('numero-homens')
-
-  let mulheres = document.createElement('span');
-  convidados.appendChild(mulheres)
-  mulheres.classList.add('numero-mulheres')
-
-  let criancas = document.createElement('span');
-  convidados.appendChild(criancas)
-  criancas.classList.add('numero-criancas')
-
-  if (inputHomem.value > 1) {
-    homens.textContent = inputHomem.value + " homens";
-  }
-  if (inputHomem.value == 1) {
-    homens.textContent = inputHomem.value + " homem";
-  }
-  if (inputMulher.value > 1) {
-    mulheres.textContent = inputMulher.value + " mulheres";
-  }
-  if (inputMulher.value == 1) {
-    mulheres.textContent = inputMulher.value + " mulher";
-  }
-  if (inputCrianca.value > 1) {
-    criancas.textContent = inputCrianca.value + " crianças";
-  }
-  if (inputCrianca.value == 1) {
-    criancas.textContent = inputCrianca.value + " criança";
+  function criarElemento(tag, classe, nomeItem) {
+    const element = document.createElement(tag);
+    element.classList.add(classe);
+    element.textContent = nomeItem;
+    return element;
   }
 
-  let secttionResultado = document.querySelector(".container-resultado");
+  function adicionaTd(tr, ...td) {
+    td.forEach((nomeItem) => {
+      const td = document.createElement("td");
+      td.textContent = nomeItem;
+      tr.appendChild(td);
+    });
+  }
+
+  const inputHomemValue = Number(inputHomem.value);
+  const inputMulherValue = Number(inputMulher.value);
+  const inputCriancaValue = Number(inputCrianca.value);
+
+  totalPessoas = inputHomemValue + inputMulherValue + inputCriancaValue;
+  totalAdultos = inputHomemValue + inputMulherValue;
+
+  totalCarne =
+    inputHomemValue * 400 + inputMulherValue * 320 + inputCriancaValue * 200;
+
+  totalPaoAlho = totalAdultos * 2 + inputCriancaValue * 1;
+  totalCarvao = totalPessoas;
+  totalSal = totalPessoas * 0.04;
+  totalGelo = totalPessoas * 0.5;
+  totalRefri = totalPessoas * 400;
+  totalAgua = totalPessoas * 200;
+  totalCerveja = Number(inputBebida.value) * 3;
+
+  const numerosConvidados = document.querySelector(".numero-convidados");
+  numerosConvidados.textContent =
+    totalPessoas > 1 ? `${totalPessoas} pessoas` : `${totalPessoas} pessoa`;
+
+  const convidados = document.querySelector(".linha-convidados");
+  convidados.innerHTML = "";
+
+  if (inputHomemValue > 0)
+    convidados.appendChild(
+      criarElemento(
+        "span",
+        "numero-homens",
+        inputHomemValue > 1
+          ? `${inputHomemValue} homens`
+          : `${inputHomemValue} homem`
+      )
+    );
+
+  if (inputMulherValue > 0)
+    convidados.appendChild(
+      criarElemento(
+        "span",
+        "numero-mulheres",
+        inputMulherValue > 1
+          ? `${inputMulherValue} mulheres`
+          : `${inputMulherValue} mulher`
+      )
+    );
+  if (inputCriancaValue > 0)
+    convidados.appendChild(
+      criarElemento(
+        "span",
+        "numero-criancas",
+        inputCriancaValue > 1
+          ? `${inputCriancaValue} crianças`
+          : `${inputCriancaValue} criança`
+      )
+    );
+
+  const secttionResultado = document.querySelector(".container-resultado");
   secttionResultado.style.display = "block";
   sectionUsuario.style.display = "none";
   sectionPessoas.style.display = "none";
 
-  let itemCarne = document.querySelector('.carne');
-  let Carne = document.createElement('td');
-  let qntCarne = document.createElement('td');
-  itemCarne.appendChild(Carne)
-  itemCarne.appendChild(qntCarne)
-  Carne.innerHTML = `<td >Carne</td>`;
-  qntCarne.innerHTML = `<td >${totalCarne} g</td>`;
+  adicionaTd(document.querySelector(".carne"), "Carne", `${totalCarne} g`);
+  adicionaTd(
+    document.querySelector(".pao-alho"),
+    "Pão de alho",
+    `${totalPaoAlho} unidades`
+  );
+  adicionaTd(document.querySelector(".carvao"), "Carvão", `${totalCarvao} kg`);
+  adicionaTd(document.querySelector(".sal"), "Sal", `${totalSal} g`);
+  adicionaTd(document.querySelector(".gelo"), "Gelo", `${totalGelo} saco`);
+  adicionaTd(
+    document.querySelector(".refri"),
+    "Refrigerante",
+    `${totalRefri} ml`
+  );
+  adicionaTd(document.querySelector(".agua"), "Água", `${totalAgua} ml`);
 
-  let itemPaoAlho = document.querySelector('.pao-alho');
-  let paoAlho = document.createElement('td');
-  let qntPaoAlho = document.createElement('td');
-  itemPaoAlho.appendChild(paoAlho)
-  itemPaoAlho.appendChild(qntPaoAlho)
-  paoAlho.innerHTML = `<td >Pão de alho</td>`;
-  qntPaoAlho.innerHTML = `<td >${totalPaoAlho} unidades</td>`;
-
-  let itemCarvao = document.querySelector('.carvao');
-  let carvao = document.createElement('td');
-  let qntCarvao = document.createElement('td');
-  itemCarvao.appendChild(carvao)
-  itemCarvao.appendChild(qntCarvao)
-  carvao.innerHTML = `<td >Carvão</td>`;
-  qntCarvao.innerHTML = `<td >${totalCarvao} kg</td>`;
-
-  let itemSal = document.querySelector('.sal');
-  let sal = document.createElement('td');
-  let qntSal = document.createElement('td');
-  itemSal.appendChild(sal)
-  itemSal.appendChild(qntSal)
-  sal.innerHTML = `<td >Sal</td>`;
-  qntSal.innerHTML = `<td >${totalSal} g</td>`;
- 
-  let itemGelo = document.querySelector('.gelo');
-  let gelo = document.createElement('td');
-  let qntGelo = document.createElement('td');
-  itemGelo.appendChild(gelo)
-  itemGelo.appendChild(qntGelo)
-  gelo.innerHTML = `<td >Gelo</td>`;
-  qntGelo.innerHTML = `<td >${totalGelo} saco</td>`;
-
-  let itemRefri = document.querySelector('.refri');
-  let refri = document.createElement('td');
-  let qntRefri = document.createElement('td');
-  itemRefri.appendChild(refri)
-  itemRefri.appendChild(qntRefri)
-  refri.innerHTML = `<td >Refrigerante</td>`;
-  qntRefri.innerHTML = `<td >${totalRefri} ml</td>`;
-
-  let itemAgua = document.querySelector('.agua');
-  let agua = document.createElement('td');
-  let qntAgua = document.createElement('td');
-  itemAgua.appendChild(agua)
-  itemAgua.appendChild(qntAgua)
-  agua.innerHTML = `<td >Água</td>`;
-  qntAgua.innerHTML = `<td >${totalAgua} ml</td>`;
-
-  if(inputBebida.value != 0){
-  let itemCerveja = document.querySelector('.cerveja');
-  let cerveja = document.createElement('td');
-  let qntCerveja = document.createElement('td');
-  itemCerveja.appendChild(cerveja)
-  itemCerveja.appendChild(qntCerveja)
-  cerveja.innerHTML = `<td >Cerveja</td>`;
-  qntCerveja.innerHTML = `<td >${totalCerveja} garrafas</td>`;
-  }
- 
-  e.preventDefault();
+  if (inputBebida.value != 0)
+    adicionaTd(
+      document.querySelector(".cerveja"),
+      "Cerveja",
+      `${totalCerveja} garrafas`
+    );
 });
