@@ -205,32 +205,33 @@ label {
   cursor: pointer;
   text-transform: lowercase;
 }
-button .menos{
+button .menos {
   position: relative;
   left: 30px;
 }
-button .mais{
+button .mais {
   position: relative;
   right: 30px;
 }
-.input-container{
-text-align: center;
+.input-container {
+  text-align: center;
 }
-.input-container label{
+.input-container label {
   margin-bottom: 1rem;
-  }
+}
 
 .label-container-form {
   margin-bottom: 0.2rem;
 }
 
 .email-error,
-.cep-error, .nome-error {
+.cep-error,
+.nome-error {
   font-size: 0.7rem;
   position: relative;
   bottom: 14px;
   color: var(--red-normal);
-display: none;
+  display: none;
 }
 
 .container-form input,
@@ -262,37 +263,41 @@ textarea:focus {
 .container-form-convidados input,
 textarea,
 select {
-
   border: none;
 }
 .container-form-convidados .input-container input:focus,
 select:focus,
-textarea:focus{
-  border: none
+textarea:focus {
+  border: none;
 }
-.numero-convidados{
+.numero-convidados {
   font-weight: 700;
   font-size: 1rem;
   color: var(--red-normal);
   text-transform: uppercase;
-margin: 1rem 0;
+  margin: 1rem 0;
 }
-.container-resultado{
+.container-resultado {
   display: none;
 }
-.linha-convidados{
+.linha-convidados {
   display: flex;
   margin: 2rem 0;
-  font-weight: 700;
+  font-weight: 500;
   font-size: 1rem;
-}
-.numero-mulheres{
+  color: var(--red-normal);
   text-align: center;
 }
-.numero-criancas{
+tbody {
+  height: 200px;
+}
+.numero-mulheres {
+  text-align: center;
+}
+.numero-criancas {
   text-align: right;
 }
-th{
+th {
   text-align: left;
 }
 textarea {
@@ -341,7 +346,8 @@ select {
   .content-1 {
     width: 100%;
   }
-  .pessoas-container, .container-resultado {
+  .pessoas-container,
+  .container-resultado {
     width: 50%;
   }
   .toggle-container {
@@ -373,7 +379,8 @@ select {
   .destaque-mobile {
     font-size: 2em;
   }
-  .pessoas-container, .container-resultado {
+  .pessoas-container,
+  .container-resultado {
     padding: 50px 0;
   }
   .toggle-container {
@@ -383,6 +390,7 @@ select {
 }
 
 /* quantidade-pessoas */
-.pessoas-container, .container-resultado {
+.pessoas-container,
+.container-resultado {
   display: none;
 }
